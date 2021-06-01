@@ -1,26 +1,26 @@
 function isValid(string) {
   if (string.length % 2 === 1) return false;
   const matchingSetsOfParentheses = {
-    ")": "(",
-    "}": "{",
-    "]": "[",
+    "(": ")",
+    "{": "}",
+    "[": "]",
   };
-  const openingParentheses = [];
+  const stackOfBrackets = [];
   for (let i = 0; i < string.length; i++) {
-    if (!matchingSetsOfParentheses[string[i]]) {
-      openingParentheses.push(string[i]);
+    if (matchingSetsOfParentheses[string[i]]) {
+      stackOfBrackets.push(string[i]);
     } else {
-      if (
-        matchingSetsOfParentheses[string[i]] !==
-        openingParentheses[openingParentheses.length - 1]
-      ) {
+      const lastBracketInStack = stackOfBrackets.pop();
+      if (matchingSetsOfParentheses[lastBracketInStack] !== string[i]) {
         return false;
-      } else {
-        openingParentheses.pop();
       }
     }
   }
-  return openingParentheses.length === 0 ? true : false;
+  return isEmpty(stackOfBrackets) ? true : false;
+}
+
+function isEmpty(array) {
+  return array.length === 0;
 }
 
 module.exports = isValid;
