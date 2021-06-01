@@ -39,3 +39,13 @@ test("checks if parentheses are valid when they are both scoped and consecutive 
   expect(isValid("{(([]))}([{}])")).toBeTruthy();
   expect(isValid("{(([]))}([}{])")).toBeFalsy();
 });
+
+test("checks if function return false when there are only opening brackets", () => {
+  expect(isValid("((")).toBeFalsy();
+  expect(isValid("[{{[")).toBeFalsy();
+});
+
+test("checks if function return false when therea re only closing brackets", () => {
+  expect(isValid("))")).toBeFalsy();
+  expect(isValid("]}}]")).toBeFalsy();
+});
