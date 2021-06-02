@@ -1,15 +1,12 @@
-function memoizeSumsUpToN() {
+function sumAllNumsUpToN(n) {
   const memoizedSums = {};
-  return function RecursiveSum(n) {
+  function sumRecursive(n) {
     if (n < 2) return n;
-    if (memoizedSums[n]) {
-      return memoizedSums[n];
-    }
-    memoizedSums[n] = n + RecursiveSum(n - 1);
+    if (memoizedSums[n]) return memoizedSums[n];
+    memoizedSums[n] = n + sumRecursive(n - 1);
     return memoizedSums[n];
-  };
+  }
+  return sumRecursive(n);
 }
-
-const sumAllNumsUpToN = memoizeSumsUpToN();
 
 module.exports = sumAllNumsUpToN;
