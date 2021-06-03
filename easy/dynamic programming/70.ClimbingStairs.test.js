@@ -9,3 +9,7 @@ test("returns n waysToClimb for n steps if n < 4", () => {
 test("returns 5 waysToClimb for n=4", () => {
   expect(climbingStairs(4)).toBe(5);
 });
+
+test("returns 8 waysToClimb for n=5", () => {
+  expect(climbingStairs(5)).toBe(8);
+});
