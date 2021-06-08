@@ -7,11 +7,12 @@ function isValid(input) {
   };
   const stackOfBrackets = [];
   for (let i = 0; i < input.length; i++) {
-    if (matchingSetsOfParentheses[input[i]]) {
-      stackOfBrackets.push(input[i]);
+    const bracket = input[i];
+    if (matchingSetsOfParentheses[bracket]) {
+      stackOfBrackets.push(bracket);
     } else {
       const lastBracketInStack = stackOfBrackets.pop();
-      if (matchingSetsOfParentheses[lastBracketInStack] !== input[i]) {
+      if (matchingSetsOfParentheses[lastBracketInStack] !== bracket) {
         return false;
       }
     }
