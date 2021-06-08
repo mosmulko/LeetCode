@@ -1,17 +1,17 @@
-function isValid(string) {
-  if (string.length % 2 === 1) return false;
+function isValid(input) {
+  if (input.length % 2 === 1) return false;
   const matchingSetsOfParentheses = {
     "(": ")",
     "{": "}",
     "[": "]",
   };
   const stackOfBrackets = [];
-  for (let i = 0; i < string.length; i++) {
-    if (matchingSetsOfParentheses[string[i]]) {
-      stackOfBrackets.push(string[i]);
+  for (let i = 0; i < input.length; i++) {
+    if (matchingSetsOfParentheses[input[i]]) {
+      stackOfBrackets.push(input[i]);
     } else {
       const lastBracketInStack = stackOfBrackets.pop();
-      if (matchingSetsOfParentheses[lastBracketInStack] !== string[i]) {
+      if (matchingSetsOfParentheses[lastBracketInStack] !== input[i]) {
         return false;
       }
     }
