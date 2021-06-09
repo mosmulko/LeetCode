@@ -3,9 +3,12 @@
 // You can return the answer in any order.
 
 function twoSum(nums, target) {
-  const indexesOfTargetNums =
-    nums[0] + nums[1] === target ? [0, 1] : "no matching indexes";
-  return indexesOfTargetNums;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] + nums[i + 1] === target) {
+      return [i, i + 1];
+    }
+  }
+  return "no matching indexes";
 }
 
 module.exports = twoSum;
