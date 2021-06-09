@@ -3,10 +3,14 @@
 // You can return the answer in any order.
 
 function twoSum(nums, target) {
+  const sumCandidates = {};
   for (let i = 0; i < nums.length; i++) {
-    if (nums[i] + nums[i + 1] === target) {
-      return [i, i + 1];
+    if (nums[i] >= target) continue;
+    const difference = target - nums[i];
+    if (sumCandidates[difference] !== undefined) {
+      return [sumCandidates[difference], i];
     }
+    sumCandidates[nums[i]] = i;
   }
   return "no matching indexes";
 }
