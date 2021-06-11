@@ -5,10 +5,13 @@
   "dependencies": {},
   "devDependencies": {
     "eslint": "^7.28.0",
+    "eslint-plugin-jest": "^24.3.6",
     "jest": "^27.0.4"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix --ext .js,.jsx ."
   },
   "repository": {
     "type": "git",
