@@ -19,7 +19,13 @@ test("returns rotated array if k=1 and length > k*2", () => {
 });
 
 test("returns rotated array if k > 1 and length > k*2", () => {
-  // expect(rotateArray([1, 2, 3], 2)).toEqual([2, 3, 1]);
-  // expect(rotateArray([1, 2, 3, 4], 3)).toEqual([2, 3, 4, 1]);
+  expect(rotateArray([1, 2, 3], 2)).toEqual([2, 3, 1]);
+  expect(rotateArray([1, 2, 3, 4], 3)).toEqual([2, 3, 4, 1]);
   expect(rotateArray([1, 2, 3, 4, 5, 6], 2)).toEqual([5, 6, 1, 2, 3, 4]);
+});
+
+test("returns rotated array if k > length", () => {
+  expect(rotateArray([1, 2], 3)).toEqual([2, 1]);
+  expect(rotateArray([1, 2], 5)).toEqual([2, 1]);
+  expect(rotateArray([1, 2, 3], 4)).toEqual([3, 1, 2]);
 });

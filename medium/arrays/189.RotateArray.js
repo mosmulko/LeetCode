@@ -3,6 +3,7 @@
 
 function rotateArray(nums, k) {
   if (k === 0 || nums.length === 1) return nums;
+  if (k > nums.length) k %= nums.length;
   reversePartOfArray(nums, 0);
   reversePartOfArray(nums, 0, k);
   reversePartOfArray(nums, k);
