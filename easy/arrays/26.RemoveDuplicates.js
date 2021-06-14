@@ -7,11 +7,16 @@
 // Do not allocate extra space for another array. You must do this by modifying the input array in-place with O(1) extra memory.
 
 function removeDuplicates(nums) {
-  let uniqueNums = 0;
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] !== nums[i + 1]) uniqueNums++;
+  let indexOfLastUniqueNum = 0;
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] !== nums[indexOfLastUniqueNum]) {
+      nums[++indexOfLastUniqueNum] = nums[i];
+    }
+    if (i !== indexOfLastUniqueNum) {
+      nums[i] = null;
+    }
   }
-  return uniqueNums;
+  return indexOfLastUniqueNum + 1;
 }
 
 module.exports = removeDuplicates;
