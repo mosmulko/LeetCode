@@ -3,9 +3,9 @@ function plusOne(nums) {
     if (nums[i] !== 9) {
       nums[i]++;
       return nums;
-    } else {
-      nums[i] = 0;
     }
+    nums[i] = 0;
+    if (i === 0) return [1, ...nums];
   }
 }
 
