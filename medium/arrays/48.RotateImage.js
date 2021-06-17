@@ -1,13 +1,18 @@
 function rotateMatrix(matrix) {
-  if (matrix.length <= 1) return matrix;
+  const length = matrix.length;
+  if (length <= 1) return matrix;
 
-  for (let nestedArray = 0; nestedArray < matrix.length; nestedArray++) {
+  for (let nestedArray = 0; nestedArray < length; nestedArray++) {
     reverseArray(matrix[nestedArray]);
   }
-  const currentNum = matrix[0][0];
-  const numToSwap = matrix[1][1];
-  matrix[0][0] = numToSwap;
-  matrix[1][1] = currentNum;
+
+  for (let iA = 0, jB = length - 1; iA < length - 1, jB > 0; iA++, jB--) {
+    for (let jA = 0, iB = length - 1; jA < jB, iA < iB; jA++, iB--) {
+      const currentNum = matrix[iA][jA];
+      matrix[iA][jA] = matrix[iB][jB];
+      matrix[iB][jB] = currentNum;
+    }
+  }
   return matrix;
 }
 
