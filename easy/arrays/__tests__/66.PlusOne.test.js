@@ -1,4 +1,4 @@
-const plusOne = require("./66.PlusOne");
+const plusOne = require("../66.PlusOne");
 
 test("ads 1 to last num of array if num !== 0", () => {
   expect(plusOne([4])).toEqual([5]);

@@ -1,4 +1,4 @@
-const rotateArray = require("./189.RotateArray");
+const rotateArray = require("../189.RotateArray");
 
 test("returns unchanged array if k = 0", () => {
   expect(rotateArray([1, 2, 3, 4], 0)).toEqual([1, 2, 3, 4]);

@@ -1,4 +1,4 @@
-const climbStairs = require("./70.climbingStairs");
+const climbStairs = require("../70.climbingStairs");
 
 test("returns n waysToClimb for n steps if n < 4", () => {
   expect(climbStairs(1)).toBe(1);

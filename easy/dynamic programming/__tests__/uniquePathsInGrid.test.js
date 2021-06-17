@@ -1,4 +1,4 @@
-const findNumOfUniquePathsInGrid = require("./uniquePathsInGrid");
+const findNumOfUniquePathsInGrid = require("../uniquePathsInGrid");
 
 test("return 0 if height or width of grid is 0", () => {
   expect(findNumOfUniquePathsInGrid(2, 0)).toBe(0);

@@ -1,4 +1,4 @@
-const moveZeroes = require("./283.MoveZeroes");
+const moveZeroes = require("../283.MoveZeroes");
 
 test("returns unchanged array if there are no zeroes or 0 is at the end", () => {
   expect(moveZeroes([1, 2, 3, 4])).toEqual([1, 2, 3, 4]);

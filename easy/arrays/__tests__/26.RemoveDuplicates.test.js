@@ -1,4 +1,4 @@
-const removeDuplicates = require("./26.RemoveDuplicates");
+const removeDuplicates = require("../26.RemoveDuplicates");
 
 test("returns array length if there are no duplicates", () => {
   expect(removeDuplicates([1, 2, 3, 4])).toBe(4);

@@ -1,4 +1,4 @@
-const sumAllNumsUpToN = require("./SumUpToN");
+const sumAllNumsUpToN = require("../SumUpToN");
 
 test("sum of n < 2 is n", () => {
   expect(sumAllNumsUpToN(0)).toBe(0);

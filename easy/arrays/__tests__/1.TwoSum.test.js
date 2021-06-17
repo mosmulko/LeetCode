@@ -1,4 +1,4 @@
-const twoSum = require("./1.TwoSum");
+const twoSum = require("../1.TwoSum");
 
 test("returns indexes of only 2 elements if they add up to the second argument", () => {
   expect(twoSum([1, 2], 3)).toEqual([0, 1]);

@@ -1,4 +1,4 @@
-const isSudokuValid = require("./36.ValidSudoku");
+const isSudokuValid = require("../36.ValidSudoku");
 
 const board = [
   ["5", "3", ".", ".", "7", ".", ".", ".", "."],

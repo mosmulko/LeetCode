@@ -1,4 +1,4 @@
-const rotateMatrix = require("./48.RotateImage");
+const rotateMatrix = require("../48.RotateImage");
 
 const twoByTwoMatrix = [
   [1, 2],

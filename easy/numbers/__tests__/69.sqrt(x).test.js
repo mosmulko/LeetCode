@@ -1,4 +1,4 @@
-const sqrt = require("./69.sqrt(x)");
+const sqrt = require("../69.sqrt(x)");
 
 test("returns square root of 0", () => {
   expect(sqrt(0)).toBe(0);
