@@ -31,7 +31,7 @@ const boardOLeftAxis = [
 
 test("returns null if game hasn't started yet or there's draw", () => {
   expect(whoWonTicTacToe(emptyBoard)).toBe(null);
-  // expect(whoWonTicTacToe(draw)).toBe(null);
+  expect(whoWonTicTacToe(draw)).toBe(null);
 });
 
 test("returns X if X has 3 in a row", () => {
@@ -40,4 +40,8 @@ test("returns X if X has 3 in a row", () => {
 
 test("returns X if X has 3 in a column", () => {
   expect(whoWonTicTacToe(boardXInColumn)).toBe("X");
+});
+
+test("returns O if all fields of left axis are O", () => {
+  expect(whoWonTicTacToe(boardOLeftAxis)).toBe("O");
 });
