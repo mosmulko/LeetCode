@@ -32,6 +32,14 @@ const boardXInLeftAxis = [
   ["O", "X", "X", "X", "O", null, null],
   ["O", "X", "O", "O", "X", "X", null],
 ];
+const boardOInRightAxis = [
+  [null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null],
+  [null, "O", null, null, "X", null, "O"],
+  ["X", "O", "X", null, "O", "O", null],
+  ["O", "X", "X", "X", "O", null, null],
+  ["O", "X", "O", "O", "X", "X", null],
+];
 
 test("returns null if game hasn't started yet or there's draw", () => {
   expect(whoWonConnectFour(emptyBoard)).toBe(null);
@@ -47,4 +55,8 @@ test("returns O when O has 4 in a column", () => {
 
 test("returns X when one of left axis has 4 Xs", () => {
   expect(whoWonConnectFour(boardXInLeftAxis)).toBe("X");
+});
+
+test("returns O when one of right axis has 4 Os", () => {
+  expect(whoWonConnectFour(boardOInRightAxis)).toBe("O");
 });
