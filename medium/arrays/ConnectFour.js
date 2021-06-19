@@ -29,6 +29,11 @@ function whoWonConnectFour(board) {
       if (field) {
         addOrReplacePawn(rows[row], field);
         addOrReplacePawn(columns[col], field);
+        if (
+          rows[row].length === numOfFields ||
+          columns[col].length === numOfFields
+        )
+          return field;
         if (leftAxises[row - col]) {
           addOrReplacePawn(leftAxises[row - col], field);
           if (leftAxises[row - col].length === numOfFields) return field;
@@ -37,11 +42,6 @@ function whoWonConnectFour(board) {
           addOrReplacePawn(rightAxises[row + col], field);
           if (rightAxises[row + col].length === numOfFields) return field;
         }
-        if (
-          rows[row].length === numOfFields ||
-          columns[col].length === numOfFields
-        )
-          return field;
       }
     }
   }
