@@ -37,3 +37,7 @@ test("returns null if game hasn't started yet or there's draw", () => {
 test("returns X if X has 3 in a row", () => {
   expect(whoWonTicTacToe(boardXInRow)).toBe("X");
 });
+
+test("returns X if X has 3 in a column", () => {
+  expect(whoWonTicTacToe(boardXInColumn)).toBe("X");
+});
