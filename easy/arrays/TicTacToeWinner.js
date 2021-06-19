@@ -1,4 +1,6 @@
 function whoWonTicTacToe(board) {
+  const length = board.length;
+  const rowLength = board[0].length;
   const rows = {};
   const columns = {};
   const leftAxis = {};
@@ -6,18 +8,18 @@ function whoWonTicTacToe(board) {
   const leftAxisFields = {};
   const rightAxisFields = {};
 
-  for (let i = 0; i < 9; i++) {
+  for (let i = 0; i < length; i++) {
     rows[i] = {};
     columns[i] = {};
   }
 
-  for (let i = 0, j = 2; i < 3; i++, j--) {
+  for (let i = 0, j = rowLength - 1; i < length; i++, j--) {
     leftAxisFields[`${i}${i}`] = true;
     rightAxisFields[`${i}${j}`] = true;
   }
 
-  for (let row = 0; row < board.length; row++) {
-    for (let col = 0; col < board[row].length; col++) {
+  for (let row = 0; row < length; row++) {
+    for (let col = 0; col < rowLength; col++) {
       const field = board[row][col];
       const stringIndex = `${row}${col}`;
       if (field) {
@@ -30,10 +32,10 @@ function whoWonTicTacToe(board) {
           addOneToProp(rightAxis, field);
         }
         if (
-          rows[row][field] === 3 ||
-          columns[col][field] === 3 ||
-          leftAxis[field] === 3 ||
-          rightAxis[field] === 3
+          rows[row][field] === length ||
+          columns[col][field] === length ||
+          leftAxis[field] === length ||
+          rightAxis[field] === length
         )
           return field;
       }

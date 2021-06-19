@@ -35,6 +35,13 @@ const boardORightAxis = [
   ["O", "X", null],
 ];
 
+const board4X4 = [
+  ["O", "X", null, "O"],
+  [null, "O", "O", "X"],
+  ["X", "O", null, null],
+  ["O", "X", null, "X"],
+];
+
 test("returns null if game hasn't started yet or there's draw", () => {
   expect(whoWonTicTacToe(emptyBoard)).toBe(null);
   expect(whoWonTicTacToe(draw)).toBe(null);
@@ -54,4 +61,5 @@ test("returns O if all fields of left axis are O", () => {
 
 test("returns O if all fields of right axis are O", () => {
   expect(whoWonTicTacToe(boardORightAxis)).toBe("O");
+  expect(whoWonTicTacToe(board4X4)).toBe("O");
 });
