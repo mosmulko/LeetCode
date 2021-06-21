@@ -26,24 +26,24 @@ function whoWonConnectFour(board) {
   for (let row = 0; row < length; row++) {
     for (let col = 0; col < rowLength; col++) {
       const field = board[row][col];
-      addOrReplacePawn(rows[row], field);
-      addOrReplacePawn(columns[col], field);
-      if (
-        rows[row].length === numOfFields ||
-        columns[col].length === numOfFields
-      )
-        return field;
-      if (leftAxes[row - col]) {
-        addOrReplacePawn(leftAxes[row - col], field);
-        if (leftAxes[row - col].length === numOfFields) return field;
-      }
-      if (rightAxes[row + col]) {
-        addOrReplacePawn(rightAxes[row + col], field);
-        if (rightAxes[row + col].length === numOfFields) return field;
-      }
+      let winner =
+        checkForWinnerInThisLine(rows[row], field, numOfFields) ||
+        checkForWinnerInThisLine(columns[col], field, numOfFields) ||
+        checkForWinnerIfValidAxis(leftAxes[row - col], field, numOfFields) ||
+        checkForWinnerIfValidAxis(rightAxes[row + col], field, numOfFields);
+      if (winner) return winner;
     }
   }
   return null;
+}
+
+function checkForWinnerIfValidAxis(axis, pawn, numOfFields) {
+  return axis ? checkForWinnerInThisLine(axis, pawn, numOfFields) : null;
+}
+
+function checkForWinnerInThisLine(arr, pawn, numOfFields) {
+  addOrReplacePawn(arr, pawn);
+  if (arr.length === numOfFields) return pawn;
 }
 
 function addOrReplacePawn(arr, pawn) {
