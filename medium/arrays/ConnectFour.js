@@ -7,28 +7,25 @@ function whoWonConnectFour(board) {
   const leftAxes = {};
   const rightAxes = {};
 
-  for (let i = 0; i < length; i++) {
-    rows[i] = [];
-  }
-
-  for (let i = 0; i < rowLength; i++) {
-    columns[i] = [];
-  }
-
-  for (let i = -(rowLength - numOfFields); i <= length - numOfFields; i++) {
-    leftAxes[i] = [];
-  }
-
-  for (let i = numOfFields - 1; i < rowLength - numOfFields + length; i++) {
-    rightAxes[i] = [];
-  }
+  addStackForEachValidLine(rows, 0, length - 1);
+  addStackForEachValidLine(columns, 0, rowLength - 1);
+  addStackForEachValidLine(
+    leftAxes,
+    -(rowLength - numOfFields),
+    length - numOfFields
+  );
+  addStackForEachValidLine(
+    rightAxes,
+    numOfFields - 1,
+    rowLength - numOfFields + length
+  );
 
   for (let row = 0; row < length; row++) {
     for (let col = 0; col < rowLength; col++) {
       const field = board[row][col];
-      let winner =
-        checkForWinnerInThisLine(rows[row], field, numOfFields) ||
-        checkForWinnerInThisLine(columns[col], field, numOfFields) ||
+      const winner =
+        checkForWinnerInStack(rows[row], field, numOfFields) ||
+        checkForWinnerInStack(columns[col], field, numOfFields) ||
         checkForWinnerIfValidAxis(leftAxes[row - col], field, numOfFields) ||
         checkForWinnerIfValidAxis(rightAxes[row + col], field, numOfFields);
       if (winner) return winner;
@@ -37,11 +34,17 @@ function whoWonConnectFour(board) {
   return null;
 }
 
-function checkForWinnerIfValidAxis(axis, pawn, numOfFields) {
-  return axis ? checkForWinnerInThisLine(axis, pawn, numOfFields) : null;
+function addStackForEachValidLine(lineType, firstLine, lastLine) {
+  for (let line = firstLine; line <= lastLine; line++) {
+    lineType[line] = [];
+  }
 }
 
-function checkForWinnerInThisLine(arr, pawn, numOfFields) {
+function checkForWinnerIfValidAxis(axis, pawn, numOfFields) {
+  return axis ? checkForWinnerInStack(axis, pawn, numOfFields) : null;
+}
+
+function checkForWinnerInStack(arr, pawn, numOfFields) {
   addOrReplacePawn(arr, pawn);
   if (arr.length === numOfFields) return pawn;
 }
