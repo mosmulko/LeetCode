@@ -3,16 +3,17 @@
 function findLongestSubstring(input) {
   if (!input) return 0;
   if (input.length === 1) return 1;
-  const uniqueLetters = {};
+  const uniqueLetters = new Set();
   let substringLength = 0;
   for (let i = 0; i < input.length; i++) {
     const letter = input[i];
-    if (!uniqueLetters[letter]) {
-      substringLength++;
-      uniqueLetters[letter] = true;
+    if (uniqueLetters.has(letter)) {
+      substringLength = Math.max(substringLength, uniqueLetters.size);
+      uniqueLetters.clear();
     }
+    uniqueLetters.add(letter);
   }
-  return substringLength;
+  return Math.max(substringLength, uniqueLetters.size);
 }
 
 module.exports = findLongestSubstring;
