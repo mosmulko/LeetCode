@@ -9,7 +9,11 @@ function findLongestSubstring(input) {
     const letter = input[i];
     if (uniqueLetters.has(letter)) {
       substringLength = Math.max(substringLength, uniqueLetters.size);
-      uniqueLetters.clear();
+      const uniqueLettersArray = [...uniqueLetters];
+      const lastLetterIndex = uniqueLettersArray.lastIndexOf(letter);
+      uniqueLettersArray.forEach((arrayLetter, index) => {
+        if (index <= lastLetterIndex) uniqueLetters.delete(arrayLetter);
+      });
     }
     uniqueLetters.add(letter);
   }
