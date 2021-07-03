@@ -1,38 +1,33 @@
 function findLongestPalindromeSubstring(input) {
   if (input.length < 2) return input;
-  const letters = {};
-  const candidates = [];
+  let longestPalindrome = input[0];
   for (let i = 0; i < input.length; i++) {
-    const letter = input[i];
-    if (!letters[letter]) {
-      letters[letter] = [];
-    } else {
-      letters[letter].forEach((prevIndex) => candidates.push([prevIndex, i]));
+    let index, mirroredIndex;
+    let palindrome = "";
+    if (input[i] === input[i + 1]) {
+      index = i;
+      mirroredIndex = i + 1;
     }
-    letters[letter].push(i);
-  }
-  candidates.sort(compareLength);
-  candidates.forEach((arr) => {
-    let first = arr[0] + 1;
-    let reflection = arr[1] - 1;
-    const length = (reflection - first + 1) / 2;
-    let isPalindrome = true;
-    for (let i = first; i <= length; i++, reflection--) {
-      isPalindrome = input[i] === input[reflection];
+    if (input[i - 1] === input[i + 1]) {
+      palindrome += input[i];
+      index = i - 1;
+      mirroredIndex = i + 1;
     }
-    if (isPalindrome) console.log(input.substring(arr[0], arr[1] + 1));
-  });
-  return input[0];
-}
-
-function compareLength(a, b) {
-  if (a[1] - a[0] > b[1] - b[0]) {
-    return -1;
+    while (
+      input[index] === input[mirroredIndex] &&
+      index >= 0 &&
+      mirroredIndex < input.length
+    ) {
+      palindrome = input[index] + palindrome + input[mirroredIndex];
+      index--;
+      mirroredIndex++;
+    }
+    longestPalindrome =
+      palindrome.length > longestPalindrome.length
+        ? palindrome
+        : longestPalindrome;
   }
-  if (a[1] - a[0] < b[1] - b[0]) {
-    return 1;
-  }
-  return 0;
+  return longestPalindrome;
 }
 
 module.exports = findLongestPalindromeSubstring;
