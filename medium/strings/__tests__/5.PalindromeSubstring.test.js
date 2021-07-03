@@ -11,10 +11,13 @@ test("return first letter if input has length 1 or only unique characters", () =
 
 test("return longest palindrome if palindrome has equal length", () => {
   expect(findLongestPalindromeSubstring("paap")).toBe("paap");
+  expect(findLongestPalindromeSubstring("pppp")).toBe("pppp");
 });
 
 test("return longest palindrome if palindrome has odd length", () => {
   expect(findLongestPalindromeSubstring("pap")).toBe("pap");
+  expect(findLongestPalindromeSubstring("ccc")).toBe("ccc");
+  expect(findLongestPalindromeSubstring("bcccccd")).toBe("ccccc");
 });
 
 test("return length of longest palindrome substring", () => {
