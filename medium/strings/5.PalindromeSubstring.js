@@ -1,51 +1,56 @@
 function findLongestPalindromeSubstring(input) {
   if (input.length < 2) return input;
+  let isPalindrome = true;
+  for (let i = 0; i < input.length / 2; i++) {
+    const reflection = input.length - 1 - i;
+    if (input[i] !== input[reflection]) {
+      isPalindrome = false;
+    }
+  }
+  if (isPalindrome) return input;
   let longestPalindrome = input[0];
-  let i = 0;
-  while (i < input.length) {
-    let current = i;
-    let next = i + 1;
+  let lengthOfMaxCandidate = input.length;
+  let index = 0;
+  while (
+    index < input.length &&
+    longestPalindrome.length < lengthOfMaxCandidate
+  ) {
+    let first = index;
+    let second = index + 1;
+    let third = index + 2;
     let palindrome = "";
 
-    if (input[i - 1] === input[i + 1]) {
-      const letter = input[i - 1];
-      palindrome += letter + input[i] + letter;
-      next = i + 2;
-      current = i - 2;
-    } else if (input[i] === input[i + 2]) {
-      const letter = input[i];
-      palindrome += letter + input[i + 1] + letter;
-      next = i + 3;
-      if (letter === input[i + 1]) {
-        while (input[current] === input[next]) {
-          palindrome += input[current];
-          next++;
-        }
-      }
-      current = i - 1;
+    if (input[first] === input[third]) {
+      const letter = input[first];
+      palindrome += letter + input[second] + letter;
+      second = third + 1;
+      first -= 1;
+    } else if (
+      input[first] === input[second] &&
+      input[first] !== input[third]
+    ) {
+      const letter = input[first];
+      palindrome += letter + letter;
+      second = third;
+      first -= 1;
     }
 
     while (
-      input[current] === input[next] &&
-      current >= 0 &&
-      next < input.length
+      input[first] === input[second] &&
+      first >= 0 &&
+      second < input.length
     ) {
-      const letter = input[current];
+      const letter = input[first];
       palindrome = letter + palindrome + letter;
-      current--;
-      next++;
+      first--;
+      second++;
     }
 
     if (palindrome.length > longestPalindrome.length) {
       longestPalindrome = palindrome;
     }
-    // console.log(input, "i", i, "next", next);
-    // if (next - i > 1) {
-    //   i = next - 1;
-    // } else {
-    //   i = next;
-    // }
-    i++;
+    lengthOfMaxCandidate = (input.length - index) * 2 - 1;
+    index++;
   }
   return longestPalindrome;
 }
