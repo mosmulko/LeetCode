@@ -24,5 +24,8 @@ test("return length of longest palindrome substring", () => {
   expect(findLongestPalindromeSubstring("abcabcbb")).toBe("bcb");
   expect(findLongestPalindromeSubstring("pwwkekw")).toBe("wkekw");
   expect(findLongestPalindromeSubstring("babcgdedgb")).toBe("gdedg");
+  expect(findLongestPalindromeSubstring("abacab")).toBe("bacab");
   expect(findLongestPalindromeSubstring("babgdbdgdedgdb")).toBe("bdgdedgdb");
+  expect(findLongestPalindromeSubstring("bananas")).toBe("anana");
+  expect(findLongestPalindromeSubstring("ababababababa")).toBe("ababababababa");
 });
