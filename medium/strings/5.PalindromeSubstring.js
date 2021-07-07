@@ -21,7 +21,7 @@ function findLongestPalindromeSubstring(input) {
     return right - left - 1;
   }
 
-  return input.substring(startIndexOfMaxPalindrome, lengthOfMaxPalindrome);
+  return input.substr(startIndexOfMaxPalindrome, lengthOfMaxPalindrome);
 }
 
 module.exports = findLongestPalindromeSubstring;
