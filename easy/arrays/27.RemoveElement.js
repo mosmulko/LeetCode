@@ -11,7 +11,6 @@ function removeElement(nums, value) {
       nums[i] = null;
     }
   }
-  console.log(nums);
   return k;
 }
 
