@@ -1,19 +1,28 @@
 function removeElement(nums, value) {
-  let indexToFill;
+  let k = 0;
   for (let i = 0; i < nums.length; i++) {
-    if (indexToFill === undefined && nums[i] === value) {
-      indexToFill = i;
-    }
-    if (indexToFill !== undefined) {
-      if (nums[i] !== value) {
-        nums[indexToFill] = nums[i];
-        indexToFill++;
-      }
-      nums[i] = null;
-      if (i === nums.length - 1) return indexToFill;
+    if (nums[i] !== value) {
+      nums[k] = nums[i];
+      k++;
     }
   }
-  return nums.length;
+  console.log(nums);
+  return k;
 }
+
+// function removeElement(nums, value) {
+//   let indexToFill = 0;
+//   for (let i = 0; i < nums.length; i++) {
+//     if (nums[i] !== value) {
+//       nums[indexToFill] = nums[i];
+//       indexToFill++;
+//     }
+//     if (indexToFill > 0) {
+//       nums[i] = null;
+//     }
+//   }
+//   console.log(nums);
+//   return indexToFill;
+// }
 
 module.exports = removeElement;
