@@ -1,11 +1,15 @@
 const convertRomanToInteger = require("../13.RomanToInteger");
 
-test("returns correct conversion if there is only 1 symbol in the string", () => {
-  expect(convertRomanToInteger("I")).toBe(1);
-  expect(convertRomanToInteger("V")).toBe(5);
-  expect(convertRomanToInteger("X")).toBe(10);
-  expect(convertRomanToInteger("L")).toBe(50);
-  expect(convertRomanToInteger("C")).toBe(100);
-  expect(convertRomanToInteger("D")).toBe(500);
-  expect(convertRomanToInteger("M")).toBe(1000);
+test("returns correct conversion if there are more symbols, but no subtraction", () => {
+  expect(convertRomanToInteger("III")).toBe(3);
+  expect(convertRomanToInteger("VII")).toBe(7);
+  expect(convertRomanToInteger("XV")).toBe(15);
+  expect(convertRomanToInteger("CL")).toBe(150);
+});
+
+test("returns correct conversion if there is a subtraction", () => {
+  expect(convertRomanToInteger("IV")).toBe(4);
+  expect(convertRomanToInteger("IX")).toBe(9);
+  expect(convertRomanToInteger("XV")).toBe(15);
+  expect(convertRomanToInteger("MCMXCIV")).toBe(1994);
 });
